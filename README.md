@@ -12,6 +12,7 @@ brew bundle --file ~/dotfiles/Brewfile
 
 ## Included
 
+- `.zshrc` — Zsh configuration
 - `.config/wezterm/wezterm.lua` — WezTerm settings and key bindings
 - `.config/starship.toml` — Starship prompt
 - `.config/nvim/init.vim` — Neovim settings adapted from the existing Vim configuration
@@ -22,6 +23,9 @@ brew bundle --file ~/dotfiles/Brewfile
 Run from this repository. The commands preserve existing files by moving them to a `.backup` name before creating links:
 
 ```sh
+[ ! -e "$HOME/.zshrc" ] || mv "$HOME/.zshrc" "$HOME/.zshrc.backup"
+ln -s "$PWD/.zshrc" "$HOME/.zshrc"
+
 [ ! -e "$HOME/.config/wezterm/wezterm.lua" ] || mv "$HOME/.config/wezterm/wezterm.lua" "$HOME/.config/wezterm/wezterm.lua.backup"
 ln -s "$PWD/.config/wezterm/wezterm.lua" "$HOME/.config/wezterm/wezterm.lua"
 
