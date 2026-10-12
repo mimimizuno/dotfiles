@@ -14,7 +14,9 @@ vim.opt.backspace = { "indent", "eol", "start" }
 vim.opt.clipboard = { "unnamed", "unnamedplus" }
 
 vim.opt.number = true
+vim.opt.relativenumber = true
 vim.opt.cursorline = true
+vim.opt.cursorcolumn = true
 vim.opt.virtualedit = "onemore"
 vim.opt.smartindent = true
 vim.opt.showmatch = true

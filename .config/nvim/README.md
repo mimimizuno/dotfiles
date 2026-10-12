@@ -27,6 +27,8 @@ Leaderキーはスペースです。
 | `jj`（挿入モード） | ノーマルモードへ戻る |
 | `<Esc><Esc>`（ノーマルモード） | 検索ハイライトを消す |
 
+行番号は[LineJusticeプラグイン](lua/plugins/line-numbers.lua)で、各行に絶対行番号とカーソルからの相対距離を並べて表示します。カーソル行は相対距離を空欄にします。カーソル位置を追いやすいよう、現在行の横線と現在列の縦線も表示します。80桁目の目安線もあります。
+
 ## 補完対象と言語サポート
 
 nvim-cmpはLSP、スニペット、ファイルパス、現在のバッファ内の単語を補完候補として表示します。LSPはBash、CSS、HTML、JSON、Lua、Python、Ruby、JavaScript/TypeScript、Javaを設定しています。Tree-sitterはこれらに加えてMarkdown、Vim、YAMLなどの構文ハイライトを設定しています。

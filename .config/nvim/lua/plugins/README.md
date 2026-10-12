@@ -6,6 +6,7 @@ lazy.nvimがこのディレクトリのLuaファイルを読み込みます。�
 | --- | --- |
 | [`ui.lua`](ui.lua) | Tokyonight、lualine、nvim-tree、Telescope |
 | [`completion.lua`](completion.lua) | nvim-cmp、LSP/スニペット/パス/バッファ補完 |
+| [`line-numbers.lua`](line-numbers.lua) | LineJusticeとstatuscol.nvimで絶対番号と相対距離を併記 |
 | [`lsp.lua`](lsp.lua) | Mason、一般のLSPサーバー、Mason管理のツール |
 | [`java.lua`](java.lua) | Java用JDTLSの起動とプロジェクト単位のワークスペース |
 | [`treesitter.lua`](treesitter.lua) | Tree-sitter文法の導入と構文ハイライト |
@@ -26,3 +27,5 @@ MasonがJDTLSのインストールを終える前にJavaファイルを開いた
 ## キーバインド
 
 Leaderキーはスペースです。主な操作は`<Space>e`でツリー、`<Space>ff`でファイル検索、`<Space>fg`で内容検索、`<Space>cf`で整形です。LSP接続時の移動やリネームは親の[Neovim README](../../README.md#基本操作)にまとめています。
+
+行番号は各行を「絶対番号 + カーソルからの距離」で表示し、カーソル行の距離部分は空欄になります。`line-numbers.lua`がLineJusticeの表示セグメントをstatuscol.nvimに設定します。
