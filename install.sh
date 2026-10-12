@@ -25,5 +25,6 @@ link() {
 link ".zshrc"
 link ".config/wezterm/wezterm.lua"
 link ".config/starship.toml"
-link ".config/nvim/init.vim"
+link ".config/nvim/init.lua"
+link ".config/nvim/lua"
 link ".config/git/config"

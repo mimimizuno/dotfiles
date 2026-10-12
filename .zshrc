@@ -1,6 +1,7 @@
 export AWS_CA_BUNDLE=~/.ca-certificates/jamf-managed_ca_bundle.pem
 
 # Common Settings
+alias vim='nvim'
 alias ll='ls -laG'
 ## 出力を表示しながらクリップボードにコピー
 copy() {
@@ -28,6 +29,7 @@ fpath=(/opt/homebrew/opt/gradle-completion/share/zsh/site-functions $fpath)
 
 autoload -Uz compinit
 compinit
+_comp_options+=(globdots)
 zstyle ':completion:*' menu select
 
 ## Remove existing completion for gsw
