@@ -2,3 +2,5 @@
 cask "wezterm"
 brew "starship"
 brew "neovim"
+brew "direnv"
+brew "git-delta"

@@ -4,7 +4,7 @@ Personal configuration files for macOS.
 
 ## Install the applications
 
-Install WezTerm, Starship, and Neovim with Homebrew:
+Install WezTerm, Starship, Neovim, direnv, and git-delta with Homebrew:
 
 ```sh
 brew bundle --file ~/dotfiles/Brewfile
@@ -16,7 +16,8 @@ brew bundle --file ~/dotfiles/Brewfile
 - `.config/wezterm/wezterm.lua` — WezTerm settings and key bindings
 - `.config/starship.toml` — Starship prompt
 - `.config/nvim/init.vim` — Neovim settings adapted from the existing Vim configuration
-- `Brewfile` — Homebrew packages for WezTerm, Starship, and Neovim
+- `.config/git/config` — Git settings for the delta diff viewer
+- `Brewfile` — Homebrew packages for WezTerm, Starship, Neovim, direnv, and git-delta
 
 ## Link into the home directory
 

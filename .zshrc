@@ -1,20 +1,5 @@
 export AWS_CA_BUNDLE=~/.ca-certificates/jamf-managed_ca_bundle.pem
 
-autoload -Uz vcs_info
-autoload -U colors && colors
-
-zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:git:*' formats ' %F{yellow}(%b)%f'
-
-precmd() {
-    vcs_info
-}
-
-setopt PROMPT_SUBST
-
-PROMPT='%F{blue}%~%f${vcs_info_msg_0_}
-%F{green}❯%f '
-
 # Common Settings
 alias ll='ls -laG'
 ## 出力を表示しながらクリップボードにコピー
@@ -123,6 +108,9 @@ function grb() {
     git switch --track "origin/$1"
 }
 export PATH="$HOME/.local/bin:$PATH"
+
+# Starship prompt
+eval "$(starship init zsh)"
 
 ## MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="$HOME/.rd/bin:$PATH"
