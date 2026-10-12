@@ -5,10 +5,10 @@ macOSで使うシェル、ターミナル、Git、Neovimの設定を管理する
 ## ドキュメント
 
 - [設定ファイルの目次](.config/README.md)
-- [Zsh設定](.zshrc)（概要はこのREADMEの「Zsh」）
+- [Zsh設定README](ZSH.md)
 - [Neovim設定](.config/nvim/README.md)
 - [WezTerm設定](.config/wezterm/README.md)
-- [Starship設定](.config/starship.toml)（概要は[設定ファイルの目次](.config/README.md)）
+- [Starship設定](.config/starship.README.md)
 - [Git設定](.config/git/README.md)
 
 ## 初期セットアップ
