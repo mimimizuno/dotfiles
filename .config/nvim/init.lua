@@ -61,6 +61,7 @@ vim.keymap.set("n", "N", "Nzzzv")
 -- Per-language indentation from the existing Vim configuration.
 local indentation = {
     python = 4,
+    java = 4,
     ruby = 2,
     javascript = 2,
     html = 2,

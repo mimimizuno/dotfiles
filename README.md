@@ -15,7 +15,7 @@ brew bundle --file ~/dotfiles/Brewfile
 - `.zshrc` — Zsh configuration
 - `.config/wezterm/wezterm.lua` — WezTerm settings and key bindings
 - `.config/starship.toml` — Starship prompt
-- `.config/nvim/` — Neovim Lua settings, plugin manager, theme, file explorer, fuzzy finder, LSP, completion, Tree-sitter, and formatting
+- `.config/nvim/` — Neovim Lua settings, plugin manager, theme, file explorer, fuzzy finder, LSP, completion, Tree-sitter, and formatting (including Java/JDTLS)
 - `.config/git/config` — Git settings for the delta diff viewer
 - `Brewfile` — Homebrew packages for WezTerm, Starship, Neovim, direnv, git-delta, Tree-sitter CLI, and ripgrep
 

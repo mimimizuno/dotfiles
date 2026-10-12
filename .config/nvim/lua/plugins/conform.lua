@@ -4,6 +4,7 @@ return {
         opts = {
             formatters_by_ft = {
                 lua = { "stylua" },
+                java = { "google-java-format" },
                 python = { "black" },
                 javascript = { "prettierd" },
                 javascriptreact = { "prettierd" },

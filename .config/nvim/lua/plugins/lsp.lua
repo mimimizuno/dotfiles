@@ -8,6 +8,7 @@ local servers = {
     "ruby_lsp",
     "ts_ls",
 }
+local mason_servers = vim.list_extend(vim.deepcopy(servers), { "jdtls" })
 
 return {
     {
@@ -40,8 +41,9 @@ return {
             })
 
             require("mason-lspconfig").setup({
-                ensure_installed = servers,
-                automatic_enable = true,
+                ensure_installed = mason_servers,
+                -- JDTLS is started through nvim-jdtls with a project workspace.
+                automatic_enable = servers,
             })
         end,
     },
@@ -49,7 +51,7 @@ return {
         "WhoIsSethDaniel/mason-tool-installer.nvim",
         dependencies = { "mason-org/mason.nvim" },
         opts = {
-            ensure_installed = { "black", "prettierd", "shfmt", "stylua" },
+            ensure_installed = { "black", "google-java-format", "prettierd", "shfmt", "stylua" },
             auto_update = false,
             run_on_start = true,
         },
