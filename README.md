@@ -20,19 +20,8 @@ brew bundle --file ~/dotfiles/Brewfile
 
 ## Link into the home directory
 
-Run from this repository. The commands preserve existing files by moving them to a `.backup` name before creating links:
+Run from this repository. The script preserves existing files by moving them to a `.backup` name before creating links:
 
 ```sh
-[ ! -e "$HOME/.zshrc" ] || mv "$HOME/.zshrc" "$HOME/.zshrc.backup"
-ln -s "$PWD/.zshrc" "$HOME/.zshrc"
-
-[ ! -e "$HOME/.config/wezterm/wezterm.lua" ] || mv "$HOME/.config/wezterm/wezterm.lua" "$HOME/.config/wezterm/wezterm.lua.backup"
-ln -s "$PWD/.config/wezterm/wezterm.lua" "$HOME/.config/wezterm/wezterm.lua"
-
-[ ! -e "$HOME/.config/starship.toml" ] || mv "$HOME/.config/starship.toml" "$HOME/.config/starship.toml.backup"
-ln -s "$PWD/.config/starship.toml" "$HOME/.config/starship.toml"
-
-mkdir -p "$HOME/.config/nvim"
-[ ! -e "$HOME/.config/nvim/init.vim" ] || mv "$HOME/.config/nvim/init.vim" "$HOME/.config/nvim/init.vim.backup"
-ln -s "$PWD/.config/nvim/init.vim" "$HOME/.config/nvim/init.vim"
+./install.sh
 ```
