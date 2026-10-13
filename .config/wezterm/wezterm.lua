@@ -115,6 +115,18 @@ config.keys = {
         action = wezterm.action.SpawnTab "CurrentPaneDomain",
     },
 
+    -- タブの位置を入れ替え（左/右に1つ移動）
+    {
+        key = "H",
+        mods = "LEADER|SHIFT",
+        action = wezterm.action.MoveTabRelative(-1),
+    },
+    {
+        key = "L",
+        mods = "LEADER|SHIFT",
+        action = wezterm.action.MoveTabRelative(1),
+    },
+
     -- Copy Mode
     {
         key = "[",
