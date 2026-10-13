@@ -23,17 +23,43 @@ return {
         "nvim-tree/nvim-tree.lua",
         dependencies = { "nvim-tree/nvim-web-devicons" },
         keys = {
-            { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "Toggle file explorer" },
+            {
+                "<leader>e",
+                function()
+                    require("nvim-tree.api").tree.toggle({ find_file = true, focus = true })
+                end,
+                desc = "Toggle file explorer (focus current file)",
+            },
         },
         opts = {
             update_focused_file = { enable = true },
-            view = { width = 32 },
+            view = {
+                adaptive_size = true,
+                width = { min = 32, max = 60 },
+            },
+            -- LSPの警告/エラーがあるファイルにバッジを表示（親ディレクトリにも伝播）
+            diagnostics = {
+                enable = true,
+                show_on_dirs = true,
+                show_on_open_dirs = true,
+            },
         },
     },
     {
         "nvim-telescope/telescope.nvim",
         branch = "0.1.x",
         dependencies = { "nvim-lua/plenary.nvim" },
+        -- nvim-treesitterを`main`ブランチで使っているため、telescopeの
+        -- プレビューが依存する旧API(parsers.ft_to_lang)が存在せずクラッシュする。
+        -- treesitterベースのプレビューハイライトを無効化し、通常のsyntaxに
+        -- フォールバックさせる。
+        opts = {
+            defaults = {
+                preview = {
+                    treesitter = false,
+                },
+            },
+        },
         keys = {
             {
                 "<leader>ff",
@@ -63,7 +89,20 @@ return {
                 end,
                 desc = "Search help",
             },
+            {
+                "<leader>fd",
+                function()
+                    require("telescope.builtin").diagnostics()
+                end,
+                desc = "Find diagnostics (warnings/errors)",
+            },
+            {
+                "<leader>fs",
+                function()
+                    require("telescope.builtin").lsp_document_symbols()
+                end,
+                desc = "Find symbols in current file (imports, functions, classes...)",
+            },
         },
-        opts = {},
     },
 }
