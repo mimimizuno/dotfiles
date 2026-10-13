@@ -8,5 +8,6 @@
 - `line-numbers = true` — 行番号を表示
 - `side-by-side = true` — 変更前後を左右に表示
 - `core.editor = nvim -c startinsert` — GitのコミットメッセージをNeovimで開き、挿入モードから開始
+- `core.quotepath = false` — ファイル名の日本語など非ASCII文字を`\343\201\202`のような8進数エスケープではなくそのまま表示
 
 delta本体はルートの[`Brewfile`](../../Brewfile)からHomebrewで導入します。

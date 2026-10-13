@@ -13,6 +13,9 @@ return {
             -- 変更した行全体を背景色でハイライト（VSCode風の強調）
             linehl = true,
             numhl = false,
+            -- render-markdown.nvimの見出し等の背景(priority=4096)に埋もれないよう、
+            -- gitsignsの行ハイライトの優先度をそれより高くする
+            sign_priority = 5000,
             on_attach = function(bufnr)
                 local gitsigns = require("gitsigns")
 
