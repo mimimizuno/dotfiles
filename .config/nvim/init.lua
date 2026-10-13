@@ -108,5 +108,8 @@ vim.diagnostic.config({
     virtual_text = true,
 })
 
+-- hover(K)やsignature helpなど、LSPの浮動ウィンドウ全般に枠線をつけて見やすくする
+vim.o.winborder = "rounded"
+
 require("config.lazy")
 require("config.lsp-keymaps")

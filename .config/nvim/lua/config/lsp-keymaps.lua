@@ -14,6 +14,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
         map("<leader>rn", vim.lsp.buf.rename, "Rename symbol")
         map("<leader>ca", vim.lsp.buf.code_action, "Code action")
 
+        -- 引数を入力中にメソッドのシグネチャ・Javadocを表示
+        vim.keymap.set({ "n", "i" }, "<C-k>", vim.lsp.buf.signature_help, {
+            buffer = event.buf,
+            desc = "Show method signature / Javadoc",
+            silent = true,
+        })
+
         -- 警告/エラー(diagnostics)の確認
         map("[d", function()
             vim.diagnostic.jump({ count = -1, float = true })
