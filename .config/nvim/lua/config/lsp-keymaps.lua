@@ -29,6 +29,20 @@ vim.api.nvim_create_autocmd("LspAttach", {
             vim.diagnostic.jump({ count = 1, float = true })
         end, "Next diagnostic")
         map("<leader>cd", vim.diagnostic.open_float, "Show diagnostic details")
+        map("<leader>cy", function()
+            local line = vim.api.nvim_win_get_cursor(0)[1] - 1
+            local diagnostics = vim.diagnostic.get(0, { lnum = line })
+            if vim.tbl_isempty(diagnostics) then
+                vim.notify("No diagnostics on this line", vim.log.levels.WARN)
+                return
+            end
+            local messages = vim.tbl_map(function(d)
+                return d.message
+            end, diagnostics)
+            vim.fn.setreg("+", table.concat(messages, "\n"))
+            vim.diagnostic.open_float()
+            vim.notify("Copied diagnostic message to clipboard")
+        end, "Show + copy diagnostic message to clipboard")
 
         -- 依存関係（この関数を呼んでいる/呼んでいる先）の確認
         map("<leader>ci", vim.lsp.buf.incoming_calls, "Who calls this (incoming calls)")
