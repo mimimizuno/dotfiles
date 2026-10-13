@@ -114,6 +114,20 @@ export PATH="$HOME/.local/bin:$PATH"
 # Starship prompt
 eval "$(starship init zsh)"
 
+## zoxide (cdの代替、よく使うディレクトリに素早く移動)
+eval "$(zoxide init zsh --cmd cd)"
+
+## fzf (Ctrl+Rの履歴検索やCtrl+Tのファイル選択をあいまい検索化)
+if command -v fzf >/dev/null 2>&1; then
+    source <(fzf --zsh)
+fi
+
+## zoxideの候補が複数あるときにfzfで選ぶ
+zi() {
+    local dir
+    dir=$(zoxide query -l | fzf) && cd "$dir"
+}
+
 ## MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="$HOME/.rd/bin:$PATH"
 ## MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)

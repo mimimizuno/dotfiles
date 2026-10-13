@@ -22,7 +22,6 @@ config.window_background_gradient = {
 }
 
 config.show_new_tab_button_in_tab_bar = false
-config.show_close_tab_button_in_tabs = false
 
 config.colors = {
     tab_bar = {

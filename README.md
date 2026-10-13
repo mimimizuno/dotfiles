@@ -28,10 +28,10 @@ cd ~/dotfiles
 
 ## Zsh
 
-[`.zshrc`](.zshrc)にはStarshipとdirenvの初期化、Git用の短縮コマンド、変更ファイルやブランチの補完を設定しています。`vim`は`nvim`の別名です。`ga`は引数なしなら全変更ファイルをステージし、引数ありなら指定したパスをステージします。
+[`.zshrc`](.zshrc)にはStarshipとdirenvの初期化、zoxide/fzfによるあいまい検索での`cd`、Git用の短縮コマンド、変更ファイルやブランチの補完を設定しています。`vim`は`nvim`の別名です。`ga`は引数なしなら全変更ファイルをステージし、引数ありなら指定したパスをステージします。
 
 主な短縮コマンドは`gs`（status）、`gc`（commit）、`gp`（push）、`gd`（diff）、`gds`（staged diff）、`gdh`（HEADとの差分）です。
 
 ## Homebrew管理
 
-[`Brewfile`](Brewfile)にWezTerm、Starship、Neovim、direnv、git-delta、Tree-sitter CLI、ripgrepを記載しています。Neovim内のプラグインやLSPサーバーは別途Neovim起動時にlazy.nvimとMasonが管理します。
+[`Brewfile`](Brewfile)にWezTerm、Starship、Neovim、direnv、git-delta、Tree-sitter CLI、ripgrep、zoxide、fzfを記載しています。Neovim内のプラグインやLSPサーバーは別途Neovim起動時にlazy.nvimとMasonが管理します。
