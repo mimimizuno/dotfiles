@@ -43,7 +43,29 @@ return {
                 show_on_dirs = true,
                 show_on_open_dirs = true,
             },
+            renderer = {
+                -- 未保存のバッファ、git変更があるファイルの行全体（アイコン+名前）を
+                -- 背景色付きで強調する
+                highlight_modified = "all",
+                highlight_git = "all",
+            },
         },
+        config = function(_, opts)
+            require("nvim-tree").setup(opts)
+
+            -- 未保存バッファ用の背景色（git変更色とは別系統の青系）
+            local function set_tree_highlights()
+                vim.api.nvim_set_hl(0, "NvimTreeModifiedFileHL", { bg = "#1f2a3d" })
+                -- git変更ファイル用の背景色（gitsigns行ハイライトと同系統の色味）
+                vim.api.nvim_set_hl(0, "NvimTreeGitFileDirtyHL", { bg = "#2d2a1f" })
+                vim.api.nvim_set_hl(0, "NvimTreeGitFileStagedHL", { bg = "#1f2d1f" })
+                vim.api.nvim_set_hl(0, "NvimTreeGitFileNewHL", { bg = "#1f2d1f" })
+                vim.api.nvim_set_hl(0, "NvimTreeGitFileDeletedHL", { bg = "#2d1f24" })
+            end
+
+            set_tree_highlights()
+            vim.api.nvim_create_autocmd("ColorScheme", { callback = set_tree_highlights })
+        end,
     },
     {
         "nvim-telescope/telescope.nvim",
