@@ -28,3 +28,7 @@ link ".config/starship.toml"
 link ".config/nvim/init.lua"
 link ".config/nvim/lua"
 link ".config/git/config"
+link ".gradle/init.d/jacoco.init.gradle.kts"
+link ".gradle/init.d/corporate-ssl.init.gradle.kts"
+
+"$repo_dir/.gradle/setup-corporate-truststore.sh"

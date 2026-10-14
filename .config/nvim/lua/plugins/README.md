@@ -13,6 +13,7 @@ lazy.nvimがこのディレクトリのLuaファイルを読み込みます。�
 | [`conform.lua`](conform.lua) | 保存時と`<Space>cf`でのコード整形 |
 | [`gitsigns.lua`](gitsigns.lua) | 変更行のサイン・背景色表示とhunk操作キーバインド |
 | [`markdown.lua`](markdown.lua) | render-markdown.nvimでMarkdownをnvim内で装飾表示 |
+| [`coverage.lua`](coverage.lua) | nvim-coverageでJaCoCoのテストカバレッジをサイン表示 |
 
 ## 言語サーバーと補完
 

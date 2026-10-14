@@ -70,7 +70,10 @@ return {
     {
         "nvim-telescope/telescope.nvim",
         branch = "0.1.x",
-        dependencies = { "nvim-lua/plenary.nvim" },
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-telescope/telescope-live-grep-args.nvim",
+        },
         -- nvim-treesitterを`main`ブランチで使っているため、telescopeの
         -- プレビューが依存する旧API(parsers.ft_to_lang)が存在せずクラッシュする。
         -- treesitterベースのプレビューハイライトを無効化し、通常のsyntaxに
@@ -98,7 +101,19 @@ return {
                         },
                     },
                 },
+                extensions = {
+                    live_grep_args = {
+                        -- true だと "-"や引用符で始まらない入力は丸ごと1つの検索文字列として
+                        -- 扱われ、"検索語 -g main/**"のように後ろにrg引数を続けても
+                        -- 分割されず効かない。false にして常に空白区切りでトークン分割する。
+                        auto_quoting = false,
+                    },
+                },
             }
+        end,
+        config = function(_, opts)
+            require("telescope").setup(opts)
+            require("telescope").load_extension("live_grep_args")
         end,
         keys = {
             {
@@ -111,9 +126,9 @@ return {
             {
                 "<leader>fg",
                 function()
-                    require("telescope.builtin").live_grep()
+                    require("telescope").extensions.live_grep_args.live_grep_args()
                 end,
-                desc = "Search in files",
+                desc = "Search in files (supports ripgrep args like -g)",
             },
             {
                 "<leader>fb",
