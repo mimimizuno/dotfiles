@@ -18,9 +18,44 @@ return {
                 ".git",
             }
 
+            -- 今のファイルのテストクラスだけをGradleで実行する
+            local function run_current_test(bufnr)
+                local lines = vim.api.nvim_buf_get_lines(bufnr, 0, 200, false)
+                local package_name = nil
+                for _, line in ipairs(lines) do
+                    local pkg = line:match("^%s*package%s+([%w%.]+)%s*;")
+                    if pkg then
+                        package_name = pkg
+                        break
+                    end
+                end
+                local class_name = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(bufnr), ":t:r")
+                local fqcn = package_name and (package_name .. "." .. class_name) or class_name
+
+                local repo_root = vim.fs.root(bufnr, "gradlew")
+                local module_root = vim.fs.root(bufnr, { "build.gradle.kts", "build.gradle" })
+                if not repo_root or not module_root then
+                    vim.notify("Gradleプロジェクトのルートが見つかりませんでした", vim.log.levels.ERROR)
+                    return
+                end
+                local module_name = vim.fn.fnamemodify(module_root, ":t")
+
+                -- インタラクティブシェル(.zshrc起動中のstarship/zoxide等)に文字が
+                -- 割り込んでコマンドが分断されるのを避けるため、chansendで後から
+                -- 打ち込むのではなく、:terminalにコマンドを直接渡して実行する。
+                local cmd = ("cd %s && direnv exec . ./gradlew :%s:test --tests %s"):format(
+                    vim.fn.shellescape(repo_root), module_name, vim.fn.shellescape(fqcn)
+                )
+                vim.cmd("split | terminal " .. cmd)
+            end
+
             vim.api.nvim_create_autocmd("FileType", {
                 pattern = "java",
                 callback = function(event)
+                    vim.keymap.set("n", "<leader>tt", function()
+                        run_current_test(event.buf)
+                    end, { buffer = event.buf, desc = "Run this test class (Gradle)" })
+
                     local jdtls_bin = vim.fn.stdpath("data") .. "/mason/bin/jdtls"
                     if vim.fn.executable(jdtls_bin) ~= 1 then
                         vim.notify("JDTLS is still installing. Reopen this Java file after Mason finishes.", vim.log.levels.WARN)
