@@ -75,13 +75,31 @@ return {
         -- プレビューが依存する旧API(parsers.ft_to_lang)が存在せずクラッシュする。
         -- treesitterベースのプレビューハイライトを無効化し、通常のsyntaxに
         -- フォールバックさせる。
-        opts = {
-            defaults = {
-                preview = {
-                    treesitter = false,
+        opts = function()
+            local actions = require("telescope.actions")
+            return {
+                defaults = {
+                    preview = {
+                        treesitter = false,
+                    },
+                    -- 結果一覧を上、プレビューを下の縦並びにして、一覧側に画面の横幅を
+                    -- フルに使わせる（横並びだと一覧が狭くファイル名が見切れるため）
+                    layout_strategy = "vertical",
+                    layout_config = {
+                        width = 0.95,
+                        vertical = {
+                            preview_height = 0.6,
+                        },
+                    },
+                    mappings = {
+                        i = {
+                            ["<C-j>"] = actions.preview_scrolling_down,
+                            ["<C-k>"] = actions.preview_scrolling_up,
+                        },
+                    },
                 },
-            },
-        },
+            }
+        end,
         keys = {
             {
                 "<leader>ff",

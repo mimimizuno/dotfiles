@@ -25,6 +25,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
         end
 
         map("gd", vim.lsp.buf.definition, "Go to definition")
+        map("gD", function()
+            vim.cmd("vsplit")
+            vim.lsp.buf.definition()
+        end, "Go to definition in vertical split")
         map("gr", vim.lsp.buf.references, "Find references")
         map("K", vim.lsp.buf.hover, "Show documentation")
         map("<leader>rn", vim.lsp.buf.rename, "Rename symbol")
