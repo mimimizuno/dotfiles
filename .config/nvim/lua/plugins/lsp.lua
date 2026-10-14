@@ -5,7 +5,6 @@ local servers = {
     "jsonls",
     "lua_ls",
     "pyright",
-    "ruby_lsp",
     "ts_ls",
 }
 local mason_servers = vim.list_extend(vim.deepcopy(servers), { "jdtls" })

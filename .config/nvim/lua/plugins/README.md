@@ -16,7 +16,7 @@ lazy.nvimがこのディレクトリのLuaファイルを読み込みます。�
 
 ## 言語サーバーと補完
 
-MasonでBash、CSS、HTML、JSON、Lua、Python、Ruby、TypeScript/JavaScriptのサーバーとJavaのJDTLSを導入します。Javaは通常のLSP自動起動ではなく、`nvim-jdtls`からプロジェクトごとのworkspaceを指定して起動します。
+MasonでBash、CSS、HTML、JSON、Lua、Python、TypeScript/JavaScriptのサーバーとJavaのJDTLSを導入します。Javaは通常のLSP自動起動ではなく、`nvim-jdtls`からプロジェクトごとのworkspaceを指定して起動します。
 
 補完UIは[`completion.lua`](completion.lua)にあり、候補の供給元はLSP、LuaSnipスニペット、ファイルパス、バッファです。Tree-sitterは補完エンジンではなく、構文解析とハイライトを担当します。
 

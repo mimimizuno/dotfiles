@@ -33,6 +33,18 @@ vim.opt.incsearch = true
 vim.opt.wrapscan = true
 vim.opt.hlsearch = true
 
+-- ビジュアル選択した文字列をそのまま検索する（手動でyank/escして/に貼る手間を省く）
+local function search_selection(move)
+    local saved_reg = vim.fn.getreg('"')
+    vim.cmd('noautocmd normal! "vy')
+    local selection = vim.fn.getreg("v")
+    vim.fn.setreg('"', saved_reg)
+    vim.fn.setreg("/", vim.fn.escape(selection, "\\/.*$^~[]"))
+    vim.cmd("normal! " .. move)
+end
+vim.keymap.set("x", "*", function() search_selection("n") end, { desc = "Search selected text forward" })
+vim.keymap.set("x", "#", function() search_selection("N") end, { desc = "Search selected text backward" })
+
 vim.opt.backup = false
 vim.opt.swapfile = false
 vim.opt.list = true

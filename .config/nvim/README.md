@@ -75,6 +75,7 @@ Leaderキーはスペースです。
 | --- | --- |
 | `jj`（挿入モード） | ノーマルモードへ戻る |
 | `<Esc><Esc>`（ノーマルモード） | 検索ハイライトを消す |
+| `*` / `#`（ビジュアルモード） | 選択した文字列をそのまま前方/後方検索 |
 
 Markdownファイルは保存時に末尾の改行を自動追加しません（`fixendofline`を無効化）。
 
@@ -82,7 +83,7 @@ Markdownファイルは保存時に末尾の改行を自動追加しません（
 
 ## 補完対象と言語サポート
 
-nvim-cmpはLSP、スニペット、ファイルパス、現在のバッファ内の単語を補完候補として表示します。LSPはBash、CSS、HTML、JSON、Lua、Python、Ruby、JavaScript/TypeScript、Javaを設定しています。Tree-sitterはこれらに加えてMarkdown、Vim、YAMLなどの構文ハイライトを設定しています。
+nvim-cmpはLSP、スニペット、ファイルパス、現在のバッファ内の単語を補完候補として表示します。LSPはBash、CSS、HTML、JSON、Lua、Python、JavaScript/TypeScript、Javaを設定しています。Tree-sitterはこれらに加えてMarkdown、Vim、YAMLなどの構文ハイライトを設定しています。
 
 JavaはJDTLSを使用します。Maven/Gradleプロジェクトでは、ビルドファイルから読み込まれた依存ライブラリの型やAPIも補完に利用されます。フレームワーク特有の機能には専用の言語サーバーが必要な場合があります。Java用設定と必要条件は[plugins README](lua/plugins/README.md#java)を参照してください。
 
