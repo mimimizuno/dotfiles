@@ -138,6 +138,13 @@ return {
                 desc = "Find open buffers",
             },
             {
+                "<leader>fc",
+                function()
+                    require("telescope.builtin").git_status()
+                end,
+                desc = "Find changed files (git status, includes untracked)",
+            },
+            {
                 "<leader>fh",
                 function()
                     require("telescope.builtin").help_tags()

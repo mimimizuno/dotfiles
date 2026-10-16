@@ -1,5 +1,18 @@
 export AWS_CA_BUNDLE=~/.ca-certificates/jamf-managed_ca_bundle.pem
 
+## .zshrcの変更を検知して、プロンプト表示のたびに自動でsourceする
+_zshrc_mtime=$(stat -f %m ~/.zshrc 2>/dev/null)
+_reload_zshrc_if_changed() {
+    local mtime
+    mtime=$(stat -f %m ~/.zshrc 2>/dev/null)
+    if [[ "$mtime" != "$_zshrc_mtime" ]]; then
+        _zshrc_mtime=$mtime
+        source ~/.zshrc
+        echo ".zshrcを再読込しました"
+    fi
+}
+precmd_functions+=(_reload_zshrc_if_changed)
+
 # Common Settings
 alias vim='nvim'
 alias ll='ls -laG'
@@ -100,6 +113,16 @@ gdh() {
 
 gds() {
     git diff --staged "${@/#-n/--name-only}"
+}
+
+## Git show (HEADから何個前かを数字で指定、省略時はHEAD)
+unalias gsh 2>/dev/null
+gsh() {
+    if (( $# == 0 )); then
+        git show HEAD
+    else
+        git show "HEAD~$1"
+    fi
 }
 
 ## code review

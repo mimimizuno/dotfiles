@@ -98,9 +98,9 @@ for filetype, width in pairs(indentation) do
     })
 end
 
--- markdownは保存時に末尾の改行を自動追加しない（元のファイルの状態をそのまま保つ）
+-- markdownと.propertiesは保存時に末尾の改行を自動追加しない（元のファイルの状態をそのまま保つ）
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = "markdown",
+    pattern = { "markdown", "jproperties" },
     callback = function()
         vim.opt_local.fixendofline = false
     end,
