@@ -142,6 +142,11 @@ config.keys = {
             confirm = true,
         },
     },
+
+    -- JISキーボードの¥キーがそのまま"¥"として送られてしまい、
+    -- Option+¥でもbackslashにならないため、明示的に上書きする
+    { key = "¥", mods = "NONE", action = wezterm.action.SendString "\\" },
+    { key = "¥", mods = "SHIFT", action = wezterm.action.SendString "|" },
 }
 
 return config
